@@ -1,4 +1,4 @@
-package com.cejv679.soccerteamrosterweb.web;
+package footballApp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -33,6 +33,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
     // TODO Auto-generated method stub
     super.addResourceHandlers(registry);
-  }
+  } 
+
 
 }

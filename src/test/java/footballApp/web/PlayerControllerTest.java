@@ -1,7 +1,13 @@
 package footballApp.web;
 
+import com.cejv679.soccerteamrosterweb.db.PlayerRepository;
 import com.cejv679.soccerteamrosterweb.web.PlayerController;
+import footballApp.config.JpaConfig;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -9,7 +15,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes=JpaConfig.class)
 public class PlayerControllerTest {
+    
+    @Autowired
+	PlayerRepository playerRepository;
 
   @Test
   public void shouldShowRegistration() throws Exception {
@@ -21,7 +32,8 @@ public class PlayerControllerTest {
   
   @Test
   public void shouldProcessRegistration() throws Exception {
-    PlayerController controller = new PlayerController();
+       //PlayerRepository mockRepository = mock(PlayerRepository.class); 
+    PlayerController controller = new PlayerController(playerRepository);
     
     MockMvc mockMvc = standaloneSetup(controller).build();
 

@@ -5,6 +5,9 @@
  */
 package com.cejv679.soccerteamrosterweb;
 
+import com.cejv679.soccerteamrosterweb.domain.Player;
+import com.cejv679.soccerteamrosterweb.domain.Salary;
+import com.cejv679.soccerteamrosterweb.domain.Statistic;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -115,9 +118,14 @@ public class PlayerForm {
         this.numOfBookings = numOfBookings;
     }
     
-//    public Player toPlayer() {
-//    return new Player(username, password, firstName, lastName, email);
-//  }
+    public Player toPlayer() {
+        Salary sal = new Salary(amount);
+        Statistic stat = new Statistic(numOfGoals, numOfBookings);
+     Player player = new Player(firstName, lastName, age, countryOfBirth, position,sal,stat );
+     sal.setPlayer(player);
+     stat.setPlayer(player);
+     return player;
+  }
 
     
 }

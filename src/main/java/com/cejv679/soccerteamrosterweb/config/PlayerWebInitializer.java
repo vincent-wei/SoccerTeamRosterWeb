@@ -3,7 +3,7 @@ package com.cejv679.soccerteamrosterweb.config;
 import com.cejv679.soccerteamrosterweb.web.WebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class SpitterWebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class PlayerWebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
   
   @Override
   protected Class<?>[] getRootConfigClasses() {

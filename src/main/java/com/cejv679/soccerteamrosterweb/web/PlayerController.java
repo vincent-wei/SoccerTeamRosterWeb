@@ -1,6 +1,8 @@
 package com.cejv679.soccerteamrosterweb.web;
 
 import com.cejv679.soccerteamrosterweb.PlayerForm;
+import com.cejv679.soccerteamrosterweb.db.PlayerRepository;
+import com.cejv679.soccerteamrosterweb.domain.Player;
 import java.util.Currency;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -8,6 +10,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -18,10 +21,19 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 public class PlayerController {
     
+    @Autowired
+    private PlayerRepository playerRepository;
+
+    
      List<String> countries = new LinkedList<>();
     Map<String, String> countryMap = new HashMap<>();
 
     public PlayerController() {
+        initCountries();
+    }
+
+    public PlayerController(PlayerRepository playerRepository) {
+        this.playerRepository = playerRepository;
         initCountries();
     }
     
@@ -46,7 +58,9 @@ public class PlayerController {
         Locale loc = new Locale("", countryMap.get(playerForm.getCountryOfBirth()));
         Currency curr = Currency.getInstance(loc);
         model.addAttribute(playerForm);
-        model.addAttribute("currencySymbol", curr.getSymbol());       
+        model.addAttribute("currencySymbol", curr.getSymbol()); 
+        final Player toPlayer = playerForm.toPlayer();
+        playerRepository.save(toPlayer);
         return "playerdetails";
     }
 
