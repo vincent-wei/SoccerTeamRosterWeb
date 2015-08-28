@@ -1,8 +1,6 @@
 package footballApp.db;
 
 import com.cejv679.soccerteamrosterweb.db.PlayerRepository;
-import com.cejv679.soccerteamrosterweb.db.SalaryRepository;
-import com.cejv679.soccerteamrosterweb.db.StatisticRepository;
 import com.cejv679.soccerteamrosterweb.domain.Player;
 import com.cejv679.soccerteamrosterweb.domain.Salary;
 import com.cejv679.soccerteamrosterweb.domain.Statistic;
@@ -23,11 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class PlayerRepositoryTest {
 
 	@Autowired
-	PlayerRepository playerRepository;
-	@Autowired
-	SalaryRepository salaryRepository;
-	@Autowired
-	StatisticRepository statisticRepository;
+	PlayerRepository playerRepository;	
 	
 	@Test
 	@Transactional
