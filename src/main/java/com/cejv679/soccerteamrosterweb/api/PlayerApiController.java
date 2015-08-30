@@ -37,10 +37,9 @@ public class PlayerApiController {
   }
  
   
-  @RequestMapping(value="/{lastname}", method=RequestMethod.GET, produces="application/json")
-  public Player playerByLastName(@PathVariable String lastname) {
-      final Player findByLastName = playerRepository.findByLastName(lastname);
-    return findByLastName;
+  @RequestMapping(value="/{lastname}", method=RequestMethod.GET, produces="application/json") //@ResponseBody not needed, why?
+  public Player playerByLastName(@PathVariable String lastname) {     
+    return playerRepository.findByLastName(lastname);
   }
   
   @RequestMapping(method=RequestMethod.POST, consumes="application/json")

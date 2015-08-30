@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.cejv679.soccerteamrosterweb.domain;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,10 +34,12 @@ public class Player {
     @Column(name="field_position")
     private String position;
     
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "player") //cascade = CascadeType.ALL,
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "player")
+    @JsonManagedReference
     private Salary salary;
   
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "player")
+    @JsonManagedReference
     private Statistic stats;
 
     public Player() {

@@ -5,6 +5,7 @@
  */
 package com.cejv679.soccerteamrosterweb.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -30,6 +31,7 @@ public class Statistic {
     @OneToOne(optional = false)
     @JoinColumn(name="player_id",referencedColumnName = "id") //,nullable = false, updatable = false, insertable = false
     @MapsId
+    @JsonBackReference
     private Player player;
 
     public Statistic() {
